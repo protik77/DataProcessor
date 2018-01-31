@@ -1,5 +1,6 @@
 import sqlite3 as sql
 from os import path
+from tabulate import tabulate
 
 class DatabaseManagement():
     '''
@@ -116,6 +117,8 @@ class DatabaseManagement():
         except sql.Error as e:
             print(' An error has occurred while inserting:', e.args[0])
 
+        conn.commit()
+
         self.CloseConnection(conn)
 
     def InsertMultipleRows(self, properties):
@@ -138,7 +141,82 @@ class DatabaseManagement():
         except sql.Error as e:
             print(' An error has occurred while inserting:', e.args[0])
 
+        conn.commit()
+
         self.CloseConnection(conn)
 
+    def PrintRows(self, num_rows=5):
+
+        conn = self.CreateConnection()
+
+        c = self.CreateCursor(conn)
+
+        try:
+            c.execute('SELECT * FROM material_properties LIMIT (?)',(num_rows,))
+
+            table = c.fetchall()
+
+            print(tabulate(table, headers=['Material', 'Band gap', 'Color']))
+
+        except sql.Error as e:
+            print(' An error has occurred while retrieving:', e.args[0])
+
+        self.CloseConnection(conn)
+
+
+    def DeleteByMaterial(self, material_name):
+
+        conn = self.CreateConnection()
+
+        c = self.CreateCursor(conn)
+
+        try:
+            c.execute('DELETE FROM material_properties WHERE material=(?)',
+                      material_name)
+            print(' Delete successful.')
+        except sql.Error as e:
+            print(' An error has occurred while deleting: ', e.args[0])
+
+        conn.commit()
+
+        self.CloseConnection(conn)
+
+    def SearchByMaterial(self, material_name):
+
+        conn = self.CreateConnection()
+
+        c = self.CreateCursor(conn)
+
+        try:
+            c.execute('SELECT * FROM material_properties WHERE material=(?)',
+                      material_name)
+
+            table = c.fetchall()
+
+            print(tabulate(table, headers=['Material', 'Band gap', 'Color']))
+
+        except sql.Error as e:
+            print(' An error has occurred while searching: ', e.args[0])
+
+        self.CloseConnection(conn)
+
+
+    def SearchByColor(self, color):
+
+        conn = self.CreateConnection()
+
+        c = self.CreateCursor(conn)
+
+        try:
+            c.execute('SELECT * FROM material_properties WHERE color=(?)',
+                      (color,))
+            table = c.fetchall()
+
+            print(tabulate(table, headers=['Material', 'Band gap', 'Color']))
+
+        except sql.Error as e:
+            print(' An error has occurred while searching:', e.args[0])
+
+        self.CloseConnection(conn)
 
 
