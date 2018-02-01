@@ -3,9 +3,11 @@ Data provider
 ==============
 
 This code takes advantage of two classes: `CSVReader` and `DataManagement`. 
-The `CSVReader` class can be used to extract data from a CSV file.
-And the `DataManagement` class can be used for storing and retrieving data
+* The `CSVReader` class can be used to extract data from a CSV file.
+* The `DataManagement` class can be used for storing and retrieving data
 to and from a SQLite database, respectively.
+
+
 An example of a typical workflow can be:
 
 * Retrieving data from a CSV file and store that to a SQLite database:
