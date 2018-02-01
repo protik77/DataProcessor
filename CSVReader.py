@@ -3,17 +3,27 @@ import csv
 
 class CSVReader():
 
-    def __init__(self, csv_filename='data.csv', data_dir='data'):
+    def __init__(self, csv_filename='data.csv', data_dir='.'):
 
         self.csv_filename = csv_filename
         self.data_dir = data_dir
-        self.SetCSVPath()
+        self.set_csv_path()
 
-    def SetCSVPath(self):
+    def set_csv_path(self):
+        ''' Sets the path of the csv
+
+        :return: full path of the csv file
+        '''
 
         self.CSV_full_path = path.join(self.data_dir, self.csv_filename)
 
-    def GetPropertiesFromCSV(self):
+    def get_properties_from_csv(self):
+        ''' Reads csv file and creates a list of properties.
+
+        If there is a header, this function gets rid of that.
+
+        :return: a list of the properties. Each element is a tuple of property of each material.
+        '''
 
         with open(self.CSV_full_path, newline='') as csvfile:
 
@@ -40,7 +50,7 @@ class CSVReader():
                 self.this_list.append(line[0])
 
                 if line[1] == 'Band gap':
-                    self.this_list.append(line[2])
+                    self.this_list.append(float(line[2]))
                 else:
                     self.this_list.append(None)
 
