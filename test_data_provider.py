@@ -80,6 +80,7 @@ class test_database_manager(unittest.TestCase):
 
         dbm.close_connection(conn)
 
+
     def test_multiple_append(self):
         ''' Tests if the multiple append is successful or not
 
