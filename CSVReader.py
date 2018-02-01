@@ -1,7 +1,8 @@
 from os import path
 import csv
 
-class CSVReader():
+
+class CSVReader:
 
     def __init__(self, csv_filename='data.csv', data_dir='.'):
 

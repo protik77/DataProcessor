@@ -151,13 +151,13 @@ The code is tested with Python 3.
 Other than the python standard libraries, it requires `tabulate` package to output the search results.
 Tabulate can be installed using `pip`,
 ```bash
-pip install tabulate`
+pip install tabulate
 ```
 
 Or using `conda`,
 
 ```bash
-conda install tabulate`
+conda install tabulate
 ```
 
 

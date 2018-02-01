@@ -5,9 +5,7 @@ import os
 from os import path
 
 
-
-class test_csv_reader(unittest.TestCase):
-
+class TestCSVReader(unittest.TestCase):
 
     def test_number_of_materials(self):
         ''' Tests if the number of material is correct
@@ -33,11 +31,8 @@ class test_csv_reader(unittest.TestCase):
 
         self.assertEqual(properties[0], assert_tuple)
 
-class test_database_manager(unittest.TestCase):
 
-    # def setUp(self):
-    #
-    #     self.dbm = DatabaseManagement('unittest.db')
+class TestDatabaseManager(unittest.TestCase):
 
     def setUp(self):
 
@@ -79,7 +74,6 @@ class test_database_manager(unittest.TestCase):
         self.assertTrue(c)
 
         dbm.close_connection(conn)
-
 
     def test_multiple_append(self):
         ''' Tests if the multiple append is successful or not
