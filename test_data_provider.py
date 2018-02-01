@@ -3,7 +3,6 @@ from DatabaseManagement import DatabaseManagement
 from CSVReader import CSVReader
 import os
 from os import path
-import sqlite3 as sql
 
 
 
@@ -40,9 +39,15 @@ class test_database_manager(unittest.TestCase):
     #
     #     self.dbm = DatabaseManagement('unittest.db')
 
+    def setUp(self):
+
+        if path.isfile('unittest.db'):
+            os.remove('unittest.db')
+
     def tearDown(self):
 
-        os.remove('unittest.db')
+        if path.isfile('unittest.db'):
+            os.remove('unittest.db')
 
     def test_db_creation(self):
         ''' Tests if the db file created or not
@@ -187,7 +192,6 @@ class test_database_manager(unittest.TestCase):
         table = dbm.search_by_band_gap_range(band_gap_min=1.5, band_gap_max=2.0)
 
         self.assertEqual(len(table), 10)
-
 
 
 if __name__ == '__main__':

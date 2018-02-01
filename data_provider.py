@@ -1,24 +1,29 @@
-import sqlite3
 from DatabaseManagement import DatabaseManagement
 from CSVReader import CSVReader
 import argparse
 
 
 def get_args():
+
     parser = argparse.ArgumentParser()
+
     parser.add_argument('-r', '--read',help='csv file to read')
     parser.add_argument('-s', '--store', help='database file to store')
-    parser.add_argument('-pr', '--print_rows', type=int, help='print rows', default=5)
+    parser.add_argument('-pr', '--print_rows', type=int, help='print rows')
     parser.add_argument('-db', '--database', help='database to read from')
     parser.add_argument('-sm', '--material', help='search for material')
     parser.add_argument('-sc', '--color', help='search by color')
     parser.add_argument('-sb', '--band_gap', type=float, help='search by band gap')
-    parser.add_argument('-t', '--tol', type=float, help='tolerance in %', default=5)
+    parser.add_argument('-t', '--tol', type=float, help='tolerance in percentage', default=5)
     parser.add_argument('--bg_min', type=float, help='minimum band gap')
     parser.add_argument('--bg_max', type=float, help='maximum band gap')
+
     return parser.parse_args()
 
-def process_args(args):
+
+def process_args():
+
+    args = get_args()
 
     if args.read and args.store:
 
@@ -64,40 +69,13 @@ def process_args(args):
         dbm.search_by_band_gap_range(band_gap_min=args.bg_min, band_gap_max=args.bg_max)
 
     else:
-        print('\n The arugemnts provided are not valid.')
+        print('\n The arguemnts provided are not valid.')
 
 
 def main():
 
-    args = get_args()
+    process_args()
 
-    process_args(args)
 
 if __name__ == "__main__":
     main()
-
-
-# print(sqlite3.version_info())
-
-# dbm = DatabaseManagement('test.db')
-
-#dbm.CreateDB()
-
-#dbm.CreateTable()
-
-#dbm.InsertOneRow('MoS2', 1.4, 'Black')
-
-# prop = [('X', 2.4, 'White'),
-#         ('Y', 2.4 , 'Black')]
-
-#dbm.InsertMultipleRows(prop)
-
-# dbm.PrintRows(2)
-
-#dbm.DeleteByMaterial('X')
-
-# dbm.cre
-
-#dbm.SearchByMaterial('Y')
-
-# dbm.SearchByColor('Black')

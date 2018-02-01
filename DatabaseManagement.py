@@ -144,6 +144,7 @@ class DatabaseManagement():
         try:
             c.executemany('''INSERT INTO material_properties VALUES (?,?,?)''',
                       properties)
+            self.print_or_not(' Insertion into database was successful.')
         except sql.Error as e:
             print(' An error has occurred while inserting:', e.args[0])
 
@@ -220,7 +221,7 @@ class DatabaseManagement():
 
             if len(table) > 0:
 
-                self.print_or_not('\n Found {} matching materials.\n'.format(len(table)))
+                self.print_or_not('\n Found {} matching material(s).\n'.format(len(table)))
 
                 self.print_or_not(tabulate(table, headers=['Band gap', 'Color']))
 
