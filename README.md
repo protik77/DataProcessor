@@ -194,28 +194,27 @@ python -m unittest test_data_provider.py -v
 
 ```bash
 >python -m unittest test_data_provider.py -v
-test_number_of_materials (test_data_provider.test_csv_reader)
+test_number_of_materials (test_data_provider.TestCSVReader)
 Tests if the number of material is correct ... ok
-test_property_tuple (test_data_provider.test_csv_reader)
+test_property_tuple (test_data_provider.TestCSVReader)
 Tests is the tuple returned correctly ... ok
-test_band_gap_range_search (test_data_provider.test_database_manager)
+test_band_gap_range_search (test_data_provider.TestDatabaseManager)
 Tests if band gap range search is successful or not ... ok
-test_band_gap_search (test_data_provider.test_database_manager)
+test_band_gap_search (test_data_provider.TestDatabaseManager)
 Tests if band gap search is successful or not ... ok
-test_color_search (test_data_provider.test_database_manager)
+test_color_search (test_data_provider.TestDatabaseManager)
 Tests if color search is successful or not ... ok
-test_db_creation (test_data_provider.test_database_manager)
+test_db_creation (test_data_provider.TestDatabaseManager)
 Tests if the db file created or not ... ok
-test_material_search (test_data_provider.test_database_manager)
+test_material_search (test_data_provider.TestDatabaseManager)
 Tests if the material search is successful or not ... ok
-test_multiple_append (test_data_provider.test_database_manager)
+test_multiple_append (test_data_provider.TestDatabaseManager)
 Tests if the multiple append is successful or not ... ok
-test_table_creation (test_data_provider.test_database_manager)
-Tests if the table was created successfully in the database ... 
-ok
+test_table_creation (test_data_provider.TestDatabaseManager)
+Tests if the table was created successfully in the database ... ok
 
 ----------------------------------------------------------------------
-Ran 9 tests in 1.984s
+Ran 9 tests in 1.672s
 
 OK
 ```
